@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping> 
+    <!-- name 指向实体类的路径 --> 
+    <!-- table 指向数据库中表的名称 --> 
+    <class name="com.jacken.entity.Order" table="Orders"> 
+        <!-- 定义表中的主键 --> 
+        <id name="oid" type="java.lang.Integer"> 
+            <column name="oid" length="11"/> 
+            <!-- 主键的生成策略 --> 
+            <generator class="increment"/> 
+        </id> 
+        <!-- name 说明类的属性名称 type指明类型 --> 
+        <property name="descc" type="java.lang.String"> 
+            <!-- name 指定在数据库中的字段名称 length指明长度 --> 
+            <column name="descc" length="50"/> 
+        </property> 
+        
+        <!-- 加入与ClassTeam的关联 many-to-one --> 
+        <many-to-one name="customer" class="com.jacken.entity.Customer" > 
+            <column name="c_id" length="50" /> 
+         </many-to-one> 
+    </class> 
+</hibernate-mapping>

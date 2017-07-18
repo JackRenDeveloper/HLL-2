@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping> 
+    <!-- name 指向实体类的路径 --> 
+    <!-- table 指向数据库中表的名称 --> 
+    <class name="com.jacken.entity.User" table="User"> 
+        <!-- 定义表中的主键 --> 
+        <id name="id" type="java.lang.Integer"> 
+            <column name="id" length="50"/> 
+            <!-- 主键的生成策略 --> 
+            <generator class="assigned"/> 
+        </id> 
+        <!-- name 说明类的属性名称 type指明类型 --> 
+        <property name="name" type="java.lang.String"> 
+            <!-- name 指定在数据库中的字段名称 length指明长度 --> 
+            <column name="name" length="50"/> 
+        </property> 
+        <property name="pwd" type="java.lang.String"> 
+            <column name="pwd" length="50"/> 
+        </property> 
+    </class> 
+</hibernate-mapping>

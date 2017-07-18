@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping> 
+    <!-- name 指向实体类的路径 --> 
+    <!-- table 指向数据库中表的名称 --> 
+    <class name="com.jacken.entity.Customer" table="Customer"> 
+        <!-- 定义表中的主键 --> 
+        <id name="cid" type="java.lang.Integer"> 
+            <column name="cid" length="50"/> 
+            <!-- 主键的生成策略 --> 
+            <generator class="increment"/> 
+        </id> 
+        <!-- name 说明类的属性名称 type指明类型 --> 
+        <property name="cname" type="java.lang.String"> 
+            <!-- name 指定在数据库中的字段名称 length指明长度 --> 
+            <column name="cname" length="50"/> 
+        </property> 
+        <!-- 配置set集合 one-to-many      cascade操作一端影响另一端（级联） --> 
+        <set name="orders"  cascade="save-update"> 
+           <key> 
+               <column name="c_id" length="50" /> 
+           </key> 
+           <one-to-many class="com.jacken.entity.Order" /> 
+       </set> 
+    </class> 
+</hibernate-mapping>
